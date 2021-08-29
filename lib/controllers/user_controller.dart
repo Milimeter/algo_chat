@@ -180,4 +180,9 @@ class UserController extends GetxController {
       return false;
     }
   }
+    Future<User> getCurrentUser() async {
+    User currentUser;
+    currentUser = auth.currentUser;
+    return currentUser;
+  }
 }

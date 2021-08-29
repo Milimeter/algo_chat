@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:login_signup_screen/controllers/feeds_controller.dart';
 import 'package:login_signup_screen/model/user_data.dart';
+import 'package:login_signup_screen/screens/chat_screen/chat_screen.dart';
 import 'package:login_signup_screen/widgets/custom_tile.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 
@@ -121,12 +122,12 @@ class _SearchScreenState extends State<SearchScreen> {
           color: Colors.white,
           mini: false,
           onTap: () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) => ChatScreen(
-            //               receiver: searchedUser,
-            //             )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ChatScreen(
+                          receiver: searchedUser,
+                        )));
           },
           // leading: CachedImage(
           //   searchedUser.profilePhoto,

@@ -65,6 +65,9 @@ dependencies:
   pretty_qr_code: ^2.0.2
   qr_code_scanner: ^0.5.2
   new_gradient_app_bar:
+  swipe_to:
+  linkify_text:
+  emoji_picker_flutter:
 
 
 dev_dependencies:

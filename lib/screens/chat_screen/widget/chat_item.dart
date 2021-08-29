@@ -5,6 +5,7 @@ import 'package:login_signup_screen/methods/chat_methods.dart';
 import 'package:login_signup_screen/methods/contact_methods.dart';
 import 'package:login_signup_screen/model/contact.dart';
 import 'package:login_signup_screen/model/user_data.dart';
+import 'package:login_signup_screen/screens/chat_screen/chat_screen.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/last_message.dart';
 import 'package:login_signup_screen/widgets/cached_image.dart';
 import 'package:login_signup_screen/widgets/custom_tile.dart';
@@ -93,14 +94,13 @@ class _ViewLayoutState extends State<ViewLayout> {
     return CustomTile(
       color: Colors.white,
       mini: false,
-      // onTap: () => Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => ChatScreen(
-      //         receiver: widget.contact,
-      //       ),
-      //     )),
-      onTap: (){},
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatScreen(
+              receiver: widget.contact,
+            ),
+          )),
       title: Text(
         (widget.contact != null ? widget.contact.name : null) != null
             ? widget.contact.name
