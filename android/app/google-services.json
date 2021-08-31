@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "263689475685",
+    "project_id": "algochat-db162",
+    "storage_bucket": "algochat-db162.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263689475685:android:d4e28a00489dbaebb7988c",
+        "android_client_info": {
+          "package_name": "com.abdulrazaq.algo.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263689475685-iv27m0tbkf1na0up3389vg40iuuok6j5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abdulrazaq.algo.chat",
+            "certificate_hash": "2b257376f1e964788965993064e1f6b0b293ba8f"
+          }
+        },
+        {
+          "client_id": "263689475685-n250bgm530j5ui82md9cjdm5korli2og.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abdulrazaq.algo.chat",
+            "certificate_hash": "bc4ffa35ef7174c496e7203248f3a1a528ff5a70"
+          }
+        },
+        {
+          "client_id": "263689475685-esvubhshudl0assunrjgp9ckmvfaecbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt4kX-E1zCoOqcubXk0CIYAxYKVLGkR6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263689475685-esvubhshudl0assunrjgp9ckmvfaecbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
