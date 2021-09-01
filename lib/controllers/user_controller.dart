@@ -9,6 +9,7 @@ import 'package:login_signup_screen/constants/firebase.dart';
 import 'package:login_signup_screen/model/user_data.dart';
 import 'package:login_signup_screen/screens/auth/welcome.dart';
 import 'package:login_signup_screen/screens/home_screen.dart';
+import 'package:login_signup_screen/screens/onboarding/onboarding.dart';
 import 'package:login_signup_screen/utils/utilities.dart';
 import 'package:login_signup_screen/widgets/loading.dart';
 
@@ -35,11 +36,16 @@ class UserController extends GetxController {
   }
 
   _setInitialScreen(User user) {
-    if (user == null) {
-      Get.offAll(() => WelcomeScreen());
+    bool onInstall = box.read("FreshInstall");
+    if (onInstall == true || onInstall == null) {
+      Get.offAll(OnBoarding());
     } else {
-      userData.bindStream(listenToUser());
-      Get.offAll(() => HomeScreen());
+      if (user == null) {
+        Get.offAll(() => WelcomeScreen());
+      } else {
+        userData.bindStream(listenToUser());
+        Get.offAll(() => HomeScreen());
+      }
     }
   }
 
@@ -180,7 +186,8 @@ class UserController extends GetxController {
       return false;
     }
   }
-    Future<User> getCurrentUser() async {
+
+  Future<User> getCurrentUser() async {
     User currentUser;
     currentUser = auth.currentUser;
     return currentUser;

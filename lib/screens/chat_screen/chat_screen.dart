@@ -18,6 +18,7 @@ import 'package:login_signup_screen/methods/chat_methods.dart';
 import 'package:login_signup_screen/model/message.dart';
 import 'package:login_signup_screen/model/user_data.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/reply_message_widget.dart';
+import 'package:login_signup_screen/utils/permissions.dart';
 import 'package:login_signup_screen/widgets/algo_app_bar/message_app_bar_action.dart';
 import 'package:login_signup_screen/widgets/cached_image.dart';
 import 'package:login_signup_screen/widgets/show_full_image.dart';
@@ -216,7 +217,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  _buildAppBar() {
+  _buildAppBar() async{
     return MessengerAppBarAction(
       isScroll: _isScroll,
       isBack: true,
@@ -224,10 +225,19 @@ class _ChatScreenState extends State<ChatScreen> {
       imageUrl: widget.receiver.profilePhoto,
       subTitle: 'Active',
       actions: <Widget>[
-        Icon(
-          FontAwesomeIcons.phoneAlt,
+        IconButton(
+
+          icon: Icon(FontAwesomeIcons.phoneAlt,
           color: Colors.lightBlue,
-          size: 20.0,
+          size: 20.0,),
+          onPressed: () async =>
+              await Permissions.cameraAndMicrophonePermissionsGranted()
+                  ? CallUtils.dial(
+                      from: sender,
+                      to: widget.receiver,
+                      context: context,
+                      callis: "video")
+                  : {},
         ),
         Icon(
           FontAwesomeIcons.infoCircle,

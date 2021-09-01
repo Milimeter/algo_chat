@@ -23,6 +23,7 @@ path_provider=/home/millimeter/SoftDev/flutter/.pub-cache/hosted/pub.dartlang.or
 path_provider_linux=/home/millimeter/SoftDev/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.0.0/
 path_provider_macos=/home/millimeter/SoftDev/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.0/
 path_provider_windows=/home/millimeter/SoftDev/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.1/
+permission_handler=/home/millimeter/SoftDev/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-3.0.0/
 qr_code_scanner=/home/millimeter/SoftDev/flutter/.pub-cache/hosted/pub.dartlang.org/qr_code_scanner-0.5.2/
 shared_preferences=/home/millimeter/SoftDev/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.7/
 shared_preferences_linux=/home/millimeter/SoftDev/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.0.2/

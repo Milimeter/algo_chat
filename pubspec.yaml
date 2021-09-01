@@ -68,6 +68,11 @@ dependencies:
   swipe_to:
   linkify_text:
   emoji_picker_flutter:
+  flutter_svg:
+  # local storage
+  hive: ^1.4.1+1
+  clay_containers: ^0.3.2
+  permission_handler: 3.0.0
 
 
 dev_dependencies:
