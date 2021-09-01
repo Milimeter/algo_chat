@@ -237,7 +237,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       to: widget.receiver,
                       context: context,
                       callis: "video")
-                  : {},
+                  : {}, 
         ),
         Icon(
           FontAwesomeIcons.infoCircle,
