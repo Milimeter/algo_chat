@@ -9,7 +9,7 @@ It actualizes many functionalities viz; chatting with friends, Posting of polls,
 
 # Architecture
 
-The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/.......), which provides a set of API's for the AlgoChat platform and its auxiliary services. Those services include:
+The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimeter/algo_chat), which provides a set of API's for the AlgoChat platform and its auxiliary services. Those services include:
 - Architecture relies on the recently released community SDK, [algorand-dart](https://pub.dev/packages/algorand_dart), [Bloc](https://bloclibrary.dev/#/), 
 - The relayer service for fee abstraction
 - A predictable state management library and [Hive](https://docs.hivedb.dev), a lightweight and blazing fast key-value database written in pure Dart.
@@ -22,7 +22,7 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/.......)
  
 
 # Demo
-[Download the release APK to try out AlgoChat](https://github.com/add url here) 
+[Download the release APK to try out AlgoChat](https://github.com/Milimeter/algo_chat) 
 
 
 ## Features
@@ -72,7 +72,7 @@ Add more dependency used here
 
 ## Download the App
 
-You can download the beta version of our app from the [Google Play](https://play.google.com/store/apps/details?id=io.fuse.fusecash&hl=en) or the [App Store](https://apps.apple.com/us/app/fuse-wallet/id1491783654?ls=1)
+You can download the beta version of our app from the [Google Play](https://github.com/Milimeter/algo_chat) or the [App Store](https://github.com/Milimeter/algo_chat)
 
 ## Getting Started
 
@@ -83,7 +83,7 @@ You can download the beta version of our app from the [Google Play](https://play
 - Connect a phone or run a simulator.
 - Clone the project.
 
-      git clone https://github.com/addlink here
+      git clone https://github.com/Milimeter/algo_chat
       cd algochat
 
 ### Configuring the environment
@@ -112,9 +112,6 @@ You can download the beta version of our app from the [Google Play](https://play
 * Push the function `getFeed` with `firebase deploy --only functions`  In the output, you'll see the getFeed URL, copy that.
 * Replace the url in the `_getFeed` function in `feed.dart` with your cloud function url from the previous step.
 
-_**If this does not work**  and you get the error `Error: Error parsing triggers: Cannot find module './notificationHandler'` Try following [these steps](https://github.com/mdanics/fluttergram/issues/25#issuecomment-434031430). If you are still unable to get it to work please open a new issue._
-
-_You may need to create the neccessary index by running `firebase functions:log` and then clicking the link_
 
 _**If you are getting no errors, but an empty feed** You must post photos or follow users with posts as the getFeed function only returns your own posts & posts from people you follow._
 
