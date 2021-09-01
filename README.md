@@ -1,204 +1,161 @@
 # Algorand Social Media Application
 
 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+# Algochat
+AlgoChat is a Cross-Platform(Android & iOS)  Mobile Application using the Algorand blockchain written in Dart and built on [Flutter](https://flutter.dev/). Dart and others. 
+It actualizes many functionalities viz; chatting with friends, Posting of polls, posting of products/listings(ads), payment for purchases using Algocoins,sending and receiving Algocoins, video chatting, voice chatting, live stream of events and many others.
 
-   1. Definitions.
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+# Architecture
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimeter/algo_chat), which provides a set of API's for the AlgoChat platform and its auxiliary services. Those services include:
+- Architecture relies on the recently released community SDK, [algorand-dart](https://pub.dev/packages/algorand_dart), [Bloc](https://bloclibrary.dev/#/), 
+- The relayer service for fee abstraction
+- A predictable state management library and [Hive](https://docs.hivedb.dev), a lightweight and blazing fast key-value database written in pure Dart.
+- Redux for state management (https://pub.dev/packages/flutter_redux)
+- Dio for fetching APIs (https://pub.dev/packages/dio)
+- GetIt/Injectable for Dependecy Injection (DI) (https://pub.dev/packages/get_It and https://pub.dev/packages/injectable)
+- auto_route for routing (https://pub.dev/packages/auto_route)
+- Multi language support (i18n)(https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl)
+- Logging using [logger](https://pub.dev/packages/logger "logger") (lib/utils/log)
+ 
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+# Demo
+[Download the release APK to try out AlgoChat](https://github.com/Milimeter/algo_chat) 
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+## Features
+ - [ ] Post photo posts from camera or gallery
+   * Like posts
+   * Comment on posts
+   * View all comments on a post
+ - [ ] Profile Pages
+	* Follow / Unfollow Users
+	* Change image view from grid layout to feed layout
+	* Add your own bio
+	* Copy user public address
+	* Send Algocoins to user, Etc.
+ - [ ] Activity Feed showing recent likes / comments of your posts + new followers 
+ - [ ] Direct Messaging (using ........ functions)
+ - [ ] Video Calls(using ......... functions)
+	* Custom Camera Implementation
+ - [ ] Firebase Security Rules
+ - [ ] Voice Calls (using ......... functions)
+ - [ ] Live Video Streaming
+ - [ ] Stories
+ - [ ] Add others here
+ 
+ 
+## Screenshots
+<p>
+ Let Add Image Url Here
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+</p>
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+## Dependencies
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+* [Flutter](https://flutter.dev/)
+* [Firestore](https://github.com/flutter/plugins/tree/master/packages/cloud_firestore)
+* [Image Picker](https://github.com/flutter/plugins/tree/master/packages/image_picker)
+* [Google Sign In](https://github.com/flutter/plugins/tree/master/packages/google_sign_in)
+* [Firebase Auth](https://github.com/flutter/plugins/tree/master/packages/firebase_auth)
+* [UUID](https://github.com/Daegalus/dart-uuid)
+* [Dart Image](https://github.com/brendan-duncan/image)
+* [Path Provider](https://github.com/flutter/plugins/tree/master/packages/path_provider)
+* [Font Awesome](https://github.com/brianegan/font_awesome_flutter)
+* [Dart HTTP](https://github.com/dart-lang/http)
+* [Dart Async](https://github.com/dart-lang/async)
+* [Flutter Shared Preferences]()
+* [Cached Network Image](https://github.com/renefloor/flutter_cached_network_image)
+Add more dependency used here
 
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
+## Download the App
 
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
+You can download the beta version of our app from the [Google Play](https://github.com/Milimeter/algo_chat) or the [App Store](https://github.com/Milimeter/algo_chat)
 
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
+## Getting Started
 
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
+## As a developer
+- Set up a Flutter environment on your machine.
+   - [You can get started here](https://flutter.dev/docs/get-started/install).
+   - Make sure to also [create a keystore as described here](https://flutter.dev/docs/deployment/android).
+- Connect a phone or run a simulator.
+- Clone the project.
 
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
+      git clone https://github.com/Milimeter/algo_chat
+      cd algochat
 
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
+### Configuring the environment
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+1. Make a copy of `.env_example` named `.env` - `cd environment && cp .env_example .env`
 
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
+- For Android development, create a file at `./android/key.properties`, [as described here](https://flutter.dev/docs/deployment/android), containing the keystore path and passwords, as set up earlier.
+- Run the app.
 
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
+      flutter run
 
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
 
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
+#### 3. Setup the firebase app
 
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
+1. You'll need to create a Firebase instance. Follow the instructions at https://console.firebase.google.com.
+2. Once your Firebase instance is created, you'll need to enable Google authentication.
 
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
+* Go to the Firebase Console for your new instance.
+* Click "Authentication" in the left-hand menu
+* Click the "sign-in method" tab
+* Click "Google" and enable it
 
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
+3. Create Cloud Functions (to make the Feed work)
+* Create a new firebase project with `firebase init`
+* Copy this project's `functions/lib/index.js` to your firebase project's `functions/index.js`
+* Push the function `getFeed` with `firebase deploy --only functions`  In the output, you'll see the getFeed URL, copy that.
+* Replace the url in the `_getFeed` function in `feed.dart` with your cloud function url from the previous step.
 
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
 
-   END OF TERMS AND CONDITIONS
+_**If you are getting no errors, but an empty feed** You must post photos or follow users with posts as the getFeed function only returns your own posts & posts from people you follow._
 
-   APPENDIX: How to apply the Apache License to your work.
+4. Enable the Firebase Database
+* Go to the Firebase Console
+* Click "Database" in the left-hand menu
+* Click the Cloudstore "Create Database" button
+* Select "Start in test mode" and "Enable"
 
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
+5. (skip if not running on Android)
 
-   Copyright [yyyy] [name of copyright owner]
+* Create an app within your Firebase instance for Android, with package name com.yourcompany.news
+* Run the following command to get your SHA-1 key:
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+```
+keytool -exportcert -list -v \
+-alias androiddebugkey -keystore ~/.android/debug.keystore
+```
 
-       http://www.apache.org/licenses/LICENSE-2.0
+* In the Firebase console, in the settings of your Android app, add your SHA-1 key by clicking "Add Fingerprint, if you want to include that to your login access".
+* Follow instructions to download google-services.json
+* place `google-services.json` into `/android/app/`.
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+6. (skip if not running on iOS)
+
+* Create an app within your Firebase instance for iOS, with your app package name
+* Follow instructions to download GoogleService-Info.plist
+* Open XCode, right click the Runner folder, select the "Add Files to 'Runner'" menu, and select the GoogleService-Info.plist file to add it to /ios/Runner in XCode
+* Open /ios/Runner/Info.plist in a text editor. Locate the CFBundleURLSchemes key. The second item in the array value of this key is specific to the Firebase instance. Replace it with the value for REVERSED_CLIENT_ID from GoogleService-Info.plist
+
+Double check install instructions for both
+   - Google Auth Plugin
+     - https://pub.dartlang.org/packages/firebase_auth
+   - Firestore Plugin
+     -  https://pub.dartlang.org/packages/cloud_firestore
+
+
+# Application Structure
+If you opened this file in Vs code, you should have a file structure similar to the image below:
+<div style="text-align:center">
+ <img src="./file:///C:/Users/hp/Desktop/33.png" width=
+ "200px">
+</div>
+
+
+                        
 
