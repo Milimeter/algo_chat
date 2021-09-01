@@ -149,5 +149,13 @@ Double check install instructions for both
      -  https://pub.dartlang.org/packages/cloud_firestore
 
 
+# Application Structure
+If you opened this file in Vs code, you should have a file structure similar to the image below:
+<div style="text-align:center">
+ <img src="./file:///C:/Users/hp/Desktop/33.png" width=
+ "200px">
+</div>
+
+
                         
 
