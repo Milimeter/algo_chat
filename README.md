@@ -3,8 +3,8 @@
 Apache License
 
 # Algochat
-AlgoChat is a Cross-Platform(Android & iOS)  Mobile Application using the Algorand blockchain written in Dart and built on [Flutter](https://flutter.dev/). Dart and others. 
-It actualizes many functionalities viz; chatting with friends, Posting of polls, posting of products/listings(ads), payment for purchases using Algocoins,sending and receiving Algocoins, video chatting, voice chatting, live stream of events and many others.
+AlgoChat is a Cross-Platform(Android & iOS)  Mobile Application using the Algorand blockchain written in Dart and built on [Flutter](https://flutter.dev/) and others. 
+It actualizes many functionalities viz; chatting with friends, Posting of polls, posting of products/listings(ads), payment for purchases using Algocoins,sending and receiving Algocoins, direct messaging, video chatting, voice chatting, live stream of events and many others.
 
 
 # Architecture
@@ -36,15 +36,17 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimete
 	* Add your own bio
 	* Copy user public address
 	* Send Algocoins to user, Etc.
+	
  - [ ] Activity Feed showing recent likes / comments of your posts + new followers 
- - [ ] Direct Messaging (using ........ functions)
- - [ ] Video Calls(using ......... functions)
+ - [ ] Direct Messaging 
+ - [ ] Video Calls (using Agora functions)
 	* Custom Camera Implementation
+	
  - [ ] Firebase Security Rules
- - [ ] Voice Calls (using ......... functions)
+ - [ ] Voice Calls (using Agora functions)
  - [ ] Live Video Streaming
  - [ ] Stories
- - [ ] Add others here
+ - [ ] And others here
  
  
 ## Screenshots
@@ -66,9 +68,18 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimete
 * [Font Awesome](https://github.com/brianegan/font_awesome_flutter)
 * [Dart HTTP](https://github.com/dart-lang/http)
 * [Dart Async](https://github.com/dart-lang/async)
+* [Algorand Dart](https://pub.dev/packages/algorand_dart/versions)
+* [Permission Handler](https://pub.dev/packages/permission_handler)
+* [Cloud Storage](https://pub.dev/packages/cloud_firestore)
+* [Collapsible_Sidebar](https://pub.dev/packages/collapsible_sidebar)
+* [Agora]()
+* [Photo View](https://pub.dev/packages/photo_view)
+* [Geocoder](https://pub.dev/documentation/geocoder/latest)
+* [Focused Menu](https://pub.dev/packages/focused_menu)
 * [Flutter Shared Preferences]()
 * [Cached Network Image](https://github.com/renefloor/flutter_cached_network_image)
-Add more dependency used here
+* Others
+
 
 ## Download the App
 
@@ -91,10 +102,21 @@ You can download the beta version of our app from the [Google Play](https://gith
 1. Make a copy of `.env_example` named `.env` - `cd environment && cp .env_example .env`
 
 - For Android development, create a file at `./android/key.properties`, [as described here](https://flutter.dev/docs/deployment/android), containing the keystore path and passwords, as set up earlier.
-- Run the app.
+-  Run ```flutter doctor``` to check which tools are installed on the local machine and which tools need to be configured. Make sure all of them are checked and enabled.
+ <div style="text-align:center">
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/flutterdoc.JPG?raw=true">
+</div>
+
+- Then Run the app.
 
       flutter run
+      
 
+If you have some issues running the sample project, make sure Flutter is enabled and active:
+
+1. Open plugin preferences (File > Settings > Plugins).
+2. Select Marketplace, select the Flutter plugin and click Install.
+3. Restart the IDE
 
 #### 3. Setup the firebase app
 
@@ -152,10 +174,81 @@ Double check install instructions for both
 # Application Structure
 If you opened this file in Vs code, you should have a file structure similar to the image below:
 <div style="text-align:center">
- <img src="./file:///C:/Users/hp/Desktop/33.png" width=
- "200px">
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/structure_file1.JPG?raw=true">
 </div>
 
+# Algorand Wallet
 
+```
+final apiKey = 'HF4Gvj8b4y2jzH5fAWCN7aEXD61Hn5ru3HblHcpf';
+  final algodClient = AlgodClient(
+    apiUrl: PureStake.TESTNET_ALGOD_API_URL,
+    apiKey: apiKey,
+    tokenKey: PureStake.API_TOKEN_HEADER,
+  );
+
+  final indexerClient = IndexerClient(
+    apiUrl: PureStake.TESTNET_INDEXER_API_URL,
+    apiKey: apiKey,
+    tokenKey: PureStake.API_TOKEN_HEADER,
+  );
+
+  final algorand = Algorand(
+    algodClient: algodClient,
+    indexerClient: indexerClient,
+  );
+```
+* Algorand 
+
+
+
+* Algorand Accoun Fetch
+```
+	final accountInformation = await algorand.getAccountByAddress(account.publicAddress);
+	final amount = information.amountWithoutPendingRewards;
+	final pendingRewards = information.pendingRewards;
+
+	AlgorandBalance(
+   	 balance: Algo.fromMicroAlgos(amount).toString(),
+	),
+	algoSendDialog(context, {String uid}) {
+  	return showDialog(
+    	  context: context,
+     	 builder: (context) {
+     	   return Container(
+          height: MediaQuery.of(context).size.height * 0.4,
+          margin: EdgeInsets.all(35),
+```
+   
+
+# Voice and Video call
+
+Agora.io provides building blocks for you to add real-time voice and video communications through a simple and powerful SDK. You can integrate the Agora SDK to enable real-time communications in your own application quickly.
+Agora Video SDK requires camera and microphone permission to start video call.
+
+* Android 
+Open the AndroidManifest.xml file and add the required device permissions to the file.
+
+
+    ```
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- The Agora SDK requires Bluetooth permissions in case users are using Bluetooth devices.-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+   ```
+   
+* iOS 
+Open the Info.plist and add:
+
+Privacy - Microphone Usage Description, and add a note in the Value column.
+Privacy - Camera Usage Description, and add a note in the Value column.
+
+
+# Chat Messaging
                         
 
