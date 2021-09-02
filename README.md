@@ -166,9 +166,7 @@ If you opened this file in Vs code, you should have a file structure similar to 
 
 # Algorand Wallet
 
-* Algorand 
-
-...
+```
 final apiKey = 'HF4Gvj8b4y2jzH5fAWCN7aEXD61Hn5ru3HblHcpf';
   final algodClient = AlgodClient(
     apiUrl: PureStake.TESTNET_ALGOD_API_URL,
@@ -186,30 +184,29 @@ final apiKey = 'HF4Gvj8b4y2jzH5fAWCN7aEXD61Hn5ru3HblHcpf';
     algodClient: algodClient,
     indexerClient: indexerClient,
   );
-  ...
+```
+* Algorand 
+
+
 
 * Algorand Accoun Fetch
-...
+```
+	final accountInformation = await algorand.getAccountByAddress(account.publicAddress);
+	final amount = information.amountWithoutPendingRewards;
+	final pendingRewards = information.pendingRewards;
 
-final accountInformation = await algorand.getAccountByAddress(account.publicAddress);
-final amount = information.amountWithoutPendingRewards;
-final pendingRewards = information.pendingRewards;
-
-AlgorandBalance(
-    balance: Algo.fromMicroAlgos(amount).toString(),
-),
-
-algoSendDialog(context, {String uid}) {
-  return showDialog(
-      context: context,
-      builder: (context) {
-        return Container(
+	AlgorandBalance(
+   	 balance: Algo.fromMicroAlgos(amount).toString(),
+	),
+	algoSendDialog(context, {String uid}) {
+  	return showDialog(
+    	  context: context,
+     	 builder: (context) {
+     	   return Container(
           height: MediaQuery.of(context).size.height * 0.4,
           margin: EdgeInsets.all(35),
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-...
+```
+   
 
 # Voice and Video call
 
@@ -220,7 +217,7 @@ Agora Video SDK requires camera and microphone permission to start video call.
 Open the AndroidManifest.xml file and add the required device permissions to the file.
 
 
-    ...
+    ```
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -230,8 +227,8 @@ Open the AndroidManifest.xml file and add the required device permissions to the
 
     <!-- The Agora SDK requires Bluetooth permissions in case users are using Bluetooth devices.-->
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    ...
-
+   ```
+   
 * iOS 
 Open the Info.plist and add:
 
