@@ -11,6 +11,7 @@ import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:giphy_get/giphy_get.dart';
 import 'package:linkify_text/linkify_text.dart';
 import 'package:login_signup_screen/constants/controllers.dart';
 import 'package:login_signup_screen/constants/strings.dart';
@@ -48,6 +49,17 @@ class _ChatScreenState extends State<ChatScreen> {
   bool showEmojiPicker = false;
   bool ismessageRead = false;
   final _isScroll = true;
+  //Gif
+  GiphyGif currentGif;
+
+  // Giphy Client
+  GiphyClient client;
+
+  // Random ID
+  String randomId = "";
+
+  String giphy_api_key = "2PYHrwxivsewrKhB3fgSsra9a4If62Y7";
+  bool _isGiphyOptionClicked = false;
 
   @override
   void initState() {
@@ -63,6 +75,30 @@ class _ChatScreenState extends State<ChatScreen> {
         );
       });
     });
+    client = GiphyClient(apiKey: giphy_api_key, randomId: '');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      client.getRandomId().then((value) {
+        setState(() {
+          randomId = value;
+        });
+      });
+    });
+  }
+
+  _sendgif(String gif) {
+    Message _message = Message.gifMessage(
+      receiverId: widget.receiver.uid,
+      senderId: sender.uid,
+      message: "gif",
+      gif: gif,
+      photoUrl: gif,
+      timestamp: Timestamp.now(),
+      type: 'gif',
+      isRead: false,
+      idFrom: sender.uid,
+    );
+
+    _chatMethods.addGifToDb(_message);
   }
 
   showKeyboard() => textFieldFocus.requestFocus();
@@ -218,7 +254,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  _buildAppBar() async{
+  _buildAppBar() async {
     return MessengerAppBarAction(
       isScroll: _isScroll,
       isBack: true,
@@ -227,10 +263,11 @@ class _ChatScreenState extends State<ChatScreen> {
       subTitle: 'Active',
       actions: <Widget>[
         IconButton(
-
-          icon: Icon(FontAwesomeIcons.phoneAlt,
-          color: Colors.lightBlue,
-          size: 20.0,),
+          icon: Icon(
+            FontAwesomeIcons.phoneAlt,
+            color: Colors.lightBlue,
+            size: 20.0,
+          ),
           onPressed: () async =>
               await Permissions.cameraAndMicrophonePermissionsGranted()
                   ? CallUtils.dial(
@@ -238,7 +275,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       to: widget.receiver,
                       context: context,
                       callis: "video")
-                  : {}, 
+                  : {},
         ),
         Icon(
           FontAwesomeIcons.infoCircle,
@@ -369,17 +406,46 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: IconButton(
-                  onPressed: () => sendMessage(),
-                  icon: Icon(
-                    FontAwesomeIcons.paperPlane,
-                    size: 25.0,
-                    color: Colors.lightBlue,
-                  ),
-                ),
-              )
+              isWriting
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: IconButton(
+                        onPressed: () => sendMessage(),
+                        icon: Icon(
+                          FontAwesomeIcons.paperPlane,
+                          size: 25.0,
+                          color: Colors.lightBlue,
+                        ),
+                      ),
+                    )
+                  : InkWell(
+                      onTap: () async {
+                        hideEmojiContainer();
+                        setState(() {
+                          _isGiphyOptionClicked = !_isGiphyOptionClicked;
+                        });
+                        GiphyGif gif = await GiphyGet.getGif(
+                          context: context,
+                          apiKey: giphy_api_key, //YOUR API KEY HERE
+                          lang: GiphyLanguage.english,
+                        );
+                        if (gif != null && mounted) {
+                          print("+++sending gif");
+                          print(gif.images.original.webp);
+                          _sendgif(gif.images.original.webp);
+                          // setState(() {
+                          //   currentGif = gif;
+                          // });
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Icon(
+                          FontAwesomeIcons.faucet,
+                          size: 25.0,
+                          color: Colors.lightBlue,
+                        ),
+                      )),
             ],
           ),
         ),
@@ -950,6 +1016,17 @@ class _ChatScreenState extends State<ChatScreen> {
           );
         },
       );
+    } else if (message.type == "gif") {
+      message.gif == null
+          ? Container()
+          : ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                message.gif,
+                headers: {'accept': 'image/*'},
+                height: 200.0,
+              ),
+            );
     }
   }
 
@@ -991,14 +1068,14 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: message.type == 'sticker'
+                            color: message.type == 'sticker' || message.type == 'gif'
                                 ? Colors.transparent
                                 : Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 5,
                           ),
                         ],
-                        color: message.type == 'sticker'
+                        color: message.type == 'sticker' || message.type == 'gif'
                             ? Colors.transparent
                             : Colors.white,
                         borderRadius: BorderRadius.only(
@@ -1047,14 +1124,14 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: message.type == 'sticker'
+                            color: message.type == 'sticker' || message.type == 'gif'
                                 ? Colors.transparent
                                 : Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 5,
                           ),
                         ],
-                        color: message.type == 'sticker'
+                        color: message.type == 'sticker' || message.type == 'gif'
                             ? Colors.transparent
                             : Colors.white,
                         borderRadius: BorderRadius.only(

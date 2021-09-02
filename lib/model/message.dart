@@ -10,6 +10,7 @@ class Message {
   bool isRead;
   String idFrom;
   Message replyMessage;
+  String gif;
 
   Message({
     this.senderId,
@@ -20,6 +21,19 @@ class Message {
     this.isRead,
     this.idFrom,
     this.replyMessage,
+  });
+
+  Message.gifMessage({
+    this.replyMessage,
+    this.senderId,
+    this.receiverId,
+    this.message,
+    this.type,
+    this.timestamp,
+    this.photoUrl,
+    this.isRead,
+    this.idFrom,
+    this.gif,
   });
   //Will be only called when you wish to send an multiple image
   // named constructor
@@ -111,6 +125,20 @@ class Message {
     // map['replyMessage'] == null
     //         ? null
     //         : Message.toMap(map['replyMessage']),
+    return map;
+  }
+  Map toGifMap() {
+    var map = Map<String, dynamic>();
+    map['message'] = this.message;
+    map['senderId'] = this.senderId;
+    map['receiverId'] = this.receiverId;
+    map['type'] = this.type;
+    map['timestamp'] = this.timestamp;
+    map['gif'] = this.gif;
+    map['isRead'] = this.isRead;
+    map['idFrom'] = this.idFrom;
+    map['replyMessage'] =
+        this.replyMessage == null ? null : this.replyMessage.toGifMap();
     return map;
   }
 

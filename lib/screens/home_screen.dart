@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:login_signup_screen/constants/controllers.dart';
+import 'package:login_signup_screen/methods/local_db/repository/log_repository.dart';
 import 'package:login_signup_screen/screens/chat_screen/chat.dart';
 import 'package:login_signup_screen/screens/feeds/feeds.dart';
 import 'package:login_signup_screen/screens/pageview/algorand_web.dart';
@@ -25,6 +28,12 @@ class _MyHomePageState extends State<HomeScreen> {
 
   @override
   void initState() {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      LogRepository.init(
+        isHive: true,
+        dbName: userController.userData.value.uid,
+      );
+    });
     super.initState();
   }
 

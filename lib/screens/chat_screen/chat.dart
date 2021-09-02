@@ -5,9 +5,11 @@ import 'package:get/get.dart';
 import 'package:login_signup_screen/constants/controllers.dart';
 import 'package:login_signup_screen/methods/chat_methods.dart';
 import 'package:login_signup_screen/model/contact.dart';
+import 'package:login_signup_screen/model/message.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/chat_item.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/search_bar.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/search_user.dart';
+import 'package:login_signup_screen/screens/logs/log_screen.dart';
 import 'package:login_signup_screen/widgets/algo_app_bar/messenger_app_bar.dart';
 
 class ChatListScreen extends StatefulWidget {
@@ -19,7 +21,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
   ScrollController _controller;
   bool _isScroll = false;
   ChatMethods _chatMethods = ChatMethods();
-
+  
   _scrollListener() {
     if (_controller.offset > 0) {
       this.setState(() {
@@ -35,9 +37,11 @@ class _ChatListScreenState extends State<ChatListScreen> {
   void initState() {
     _controller = ScrollController();
     _controller.addListener(_scrollListener);
+   
     super.initState();
   }
 
+  
   @override
   Widget build(BuildContext context) {
     return NotificationListener<OverscrollIndicatorNotification>(
@@ -124,18 +128,6 @@ class _ChatListScreenState extends State<ChatListScreen> {
       isScroll: _isScroll,
       title: 'Chats',
       actions: <Widget>[
-        Container(
-          width: 40.0,
-          height: 40.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.grey.shade200,
-          ),
-          child: Icon(
-            FontAwesomeIcons.camera,
-            size: 18.0,
-          ),
-        ),
         GestureDetector(
           onTap: () {
             Get.to(SearchScreen());
@@ -149,6 +141,23 @@ class _ChatListScreenState extends State<ChatListScreen> {
             ),
             child: Icon(
               FontAwesomeIcons.pen,
+              size: 18.0,
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> LogScreen()));
+          },
+          child: Container(
+            width: 40.0,
+            height: 40.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.grey.shade200,
+            ),
+            child: Icon(
+              FontAwesomeIcons.camera,
               size: 18.0,
             ),
           ),

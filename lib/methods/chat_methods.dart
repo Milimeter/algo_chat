@@ -40,6 +40,30 @@ class ChatMethods {
       print(e);
     }
   }
+   Future<void> addGifToDb(
+    Message message,
+  ) async {
+    try {
+      print(">>>>>>>>>>>>>>>>>>Sending Message<<<<<<<<<<<<<<<<<");
+      var map = message.toGifMap();
+
+      await _messageCollection
+          .doc(message.senderId)
+          .collection(message.receiverId)
+          .add(map);
+
+      updateContactListOrder(
+          senderId: message.senderId, receiverId: message.receiverId);
+      print("-------------------done---------------");
+
+      return await _messageCollection
+          .doc(message.receiverId)
+          .collection(message.senderId)
+          .add(map);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   // DocumentReference getContactsDocument({String of, String forContact}) =>
   //     _userCollection
