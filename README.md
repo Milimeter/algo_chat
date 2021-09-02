@@ -66,6 +66,14 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimete
 * [Font Awesome](https://github.com/brianegan/font_awesome_flutter)
 * [Dart HTTP](https://github.com/dart-lang/http)
 * [Dart Async](https://github.com/dart-lang/async)
+* [Algorand Dart](https://pub.dev/packages/algorand_dart/versions)
+* [Permission Handler](https://pub.dev/packages/permission_handler)
+* [Cloud Storage](https://pub.dev/packages/cloud_firestore)
+* [Collapsible_Sidebar](https://pub.dev/packages/collapsible_sidebar)
+* [Agora]()
+* [Photo View](https://pub.dev/packages/photo_view)
+* [Geocoder](https://pub.dev/documentation/geocoder/latest)
+* [Focused Menu](https://pub.dev/packages/focused_menu)
 * [Flutter Shared Preferences]()
 * [Cached Network Image](https://github.com/renefloor/flutter_cached_network_image)
 Add more dependency used here
@@ -156,6 +164,85 @@ If you opened this file in Vs code, you should have a file structure similar to 
  "200px">
 </div>
 
+# Algorand Wallet
 
+* Algorand 
+
+...
+final apiKey = 'HF4Gvj8b4y2jzH5fAWCN7aEXD61Hn5ru3HblHcpf';
+  final algodClient = AlgodClient(
+    apiUrl: PureStake.TESTNET_ALGOD_API_URL,
+    apiKey: apiKey,
+    tokenKey: PureStake.API_TOKEN_HEADER,
+  );
+
+  final indexerClient = IndexerClient(
+    apiUrl: PureStake.TESTNET_INDEXER_API_URL,
+    apiKey: apiKey,
+    tokenKey: PureStake.API_TOKEN_HEADER,
+  );
+
+  final algorand = Algorand(
+    algodClient: algodClient,
+    indexerClient: indexerClient,
+  );
+  ...
+
+* Algorand Accoun Fetch
+...
+
+final accountInformation = await algorand.getAccountByAddress(account.publicAddress);
+final amount = information.amountWithoutPendingRewards;
+final pendingRewards = information.pendingRewards;
+
+AlgorandBalance(
+    balance: Algo.fromMicroAlgos(amount).toString(),
+),
+
+algoSendDialog(context, {String uid}) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.4,
+          margin: EdgeInsets.all(35),
+          padding: EdgeInsets.all(15),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+...
+
+# Voice and Video call
+
+Agora.io provides building blocks for you to add real-time voice and video communications through a simple and powerful SDK. You can integrate the Agora SDK to enable real-time communications in your own application quickly.
+Agora Video SDK requires camera and microphone permission to start video call.
+
+* Android 
+Open the AndroidManifest.xml file and add the required device permissions to the file.
+
+
+    ...
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- The Agora SDK requires Bluetooth permissions in case users are using Bluetooth devices.-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    ...
+
+* iOS 
+Open the Info.plist and add:
+
+Privacy - Microphone Usage Description, and add a note in the Value column.
+Privacy - Camera Usage Description, and add a note in the Value column.
+
+
+
+
+
+
+# Chat Messaging
                         
 
