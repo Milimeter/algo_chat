@@ -3,8 +3,8 @@
 Apache License
 
 # Algochat
-AlgoChat is a Cross-Platform(Android & iOS)  Mobile Application using the Algorand blockchain written in Dart and built on [Flutter](https://flutter.dev/). Dart and others. 
-It actualizes many functionalities viz; chatting with friends, Posting of polls, posting of products/listings(ads), payment for purchases using Algocoins,sending and receiving Algocoins, video chatting, voice chatting, live stream of events and many others.
+AlgoChat is a Cross-Platform(Android & iOS)  Mobile Application using the Algorand blockchain written in Dart and built on [Flutter](https://flutter.dev/) and others. 
+It actualizes many functionalities viz; chatting with friends, Posting of polls, posting of products/listings(ads), payment for purchases using Algocoins,sending and receiving Algocoins, direct messaging, video chatting, voice chatting, live stream of events and many others.
 
 
 # Architecture
@@ -76,7 +76,8 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimete
 * [Focused Menu](https://pub.dev/packages/focused_menu)
 * [Flutter Shared Preferences]()
 * [Cached Network Image](https://github.com/renefloor/flutter_cached_network_image)
-Add more dependency used here
+* Others
+
 
 ## Download the App
 
@@ -99,10 +100,18 @@ You can download the beta version of our app from the [Google Play](https://gith
 1. Make a copy of `.env_example` named `.env` - `cd environment && cp .env_example .env`
 
 - For Android development, create a file at `./android/key.properties`, [as described here](https://flutter.dev/docs/deployment/android), containing the keystore path and passwords, as set up earlier.
+-  Run ```flutter doctor``` to check which tools are installed on the local machine and which tools need to be configured. Make sure all of them are checked and enabled.
+
 - Run the app.
 
       flutter run
+      
 
+If you have some issues running the sample project, make sure Flutter is enabled and active:
+
+1. Open plugin preferences (File > Settings > Plugins).
+2. Select Marketplace, select the Flutter plugin and click Install.
+3. Restart the IDE
 
 #### 3. Setup the firebase app
 
@@ -160,8 +169,7 @@ Double check install instructions for both
 # Application Structure
 If you opened this file in Vs code, you should have a file structure similar to the image below:
 <div style="text-align:center">
- <img src="./file:///C:/Users/hp/Desktop/33.png" width=
- "200px">
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/structure_file1.JPG?raw=true">
 </div>
 
 # Algorand Wallet
