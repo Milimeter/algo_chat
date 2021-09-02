@@ -36,15 +36,17 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimete
 	* Add your own bio
 	* Copy user public address
 	* Send Algocoins to user, Etc.
+	
  - [ ] Activity Feed showing recent likes / comments of your posts + new followers 
- - [ ] Direct Messaging (using ........ functions)
- - [ ] Video Calls(using ......... functions)
+ - [ ] Direct Messaging 
+ - [ ] Video Calls (using Agora functions)
 	* Custom Camera Implementation
+	
  - [ ] Firebase Security Rules
- - [ ] Voice Calls (using ......... functions)
+ - [ ] Voice Calls (using Agora functions)
  - [ ] Live Video Streaming
  - [ ] Stories
- - [ ] Add others here
+ - [ ] And others here
  
  
 ## Screenshots
@@ -101,8 +103,11 @@ You can download the beta version of our app from the [Google Play](https://gith
 
 - For Android development, create a file at `./android/key.properties`, [as described here](https://flutter.dev/docs/deployment/android), containing the keystore path and passwords, as set up earlier.
 -  Run ```flutter doctor``` to check which tools are installed on the local machine and which tools need to be configured. Make sure all of them are checked and enabled.
+ <div style="text-align:center">
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/flutterdoc.JPG?raw=true">
+</div>
 
-- Run the app.
+- Then Run the app.
 
       flutter run
       
@@ -242,10 +247,6 @@ Open the Info.plist and add:
 
 Privacy - Microphone Usage Description, and add a note in the Value column.
 Privacy - Camera Usage Description, and add a note in the Value column.
-
-
-
-
 
 
 # Chat Messaging
