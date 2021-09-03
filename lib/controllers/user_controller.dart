@@ -52,8 +52,9 @@ class UserController extends GetxController {
   get getuser => userData.bindStream(listenToUser());
 
   emailAndPasswordSignIn() async {
-    showLoading();
+    
     try {
+      showLoading();
       await auth
           .signInWithEmailAndPassword(
               email: emailTextEditingController.text.trim(),
@@ -64,6 +65,7 @@ class UserController extends GetxController {
         _clearControllers();
         // Get.offAll(HomePage());
       });
+      dismissLoading();
     } catch (e) {
       dismissLoading();
       var error = e.toString().split("]");
@@ -80,8 +82,9 @@ class UserController extends GetxController {
   }
 
   void signUp() async {
-    showLoading();
+    
     try {
+      showLoading();
       await auth
           .createUserWithEmailAndPassword(
               email: emailTextEditingController.text.trim(),
@@ -90,6 +93,7 @@ class UserController extends GetxController {
         String _userId = result.user.uid;
         _addUserToFirestore(_userId);
         _clearControllers();
+        dismissLoading();
       });
     } catch (e) {
       dismissLoading();
@@ -130,8 +134,8 @@ class UserController extends GetxController {
       "posts": '0',
       "profile_photo": "https://source.unsplash.com/user/c_v_r",
       "public_address": "",
-      "private_key": "",
-      "seed_phrase": "",
+      "private_key": [],
+      "seed_phrase": [],
     }).then((_) {
       firebaseFirestore
           .collection(usersCollection)

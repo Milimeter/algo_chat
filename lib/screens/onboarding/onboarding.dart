@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:login_signup_screen/screens/auth/login.dart';
 import 'package:login_signup_screen/screens/auth/signup.dart';
 import 'package:login_signup_screen/screens/onboarding/content_model.dart';
 
@@ -94,7 +95,7 @@ class _OnBoardingState extends State<OnBoarding> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => SignupPage(),
+                      builder: (_) => LoginPage(),
                     ),
                   );
                 }

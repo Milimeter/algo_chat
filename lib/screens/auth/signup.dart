@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_signup_screen/constants/controllers.dart';
+import 'package:login_signup_screen/screens/auth/login.dart';
 
 class SignupPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -32,21 +33,21 @@ class SignupPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-            color: Colors.black,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   brightness: Brightness.light,
+      //   backgroundColor: Colors.white,
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //     icon: Icon(
+      //       Icons.arrow_back_ios,
+      //       size: 20,
+      //       color: Colors.black,
+      //     ),
+      //   ),
+      // ),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -73,7 +74,8 @@ class SignupPage extends StatelessWidget {
                         ),
                         Text(
                           "Create an account, It's free ",
-                          style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+                          style:
+                              TextStyle(fontSize: 15, color: Colors.grey[700]),
                         )
                       ],
                     ),
@@ -81,10 +83,12 @@ class SignupPage extends StatelessWidget {
                       children: <Widget>[
                         inputFile(
                             label: "name",
-                            controller: userController.nameTextEditingController),
+                            controller:
+                                userController.nameTextEditingController),
                         inputFile(
                             label: "Email",
-                            controller: userController.emailTextEditingController),
+                            controller:
+                                userController.emailTextEditingController),
                         inputFile(
                             label: "Password",
                             obscureText: true,
@@ -123,16 +127,26 @@ class SignupPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("Already have an account?"),
-                        Text(
-                          " Login",
-                          style:
-                              TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
-                        )
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => LoginPage(),
+                          ),
+                        );
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("Already have an account?"),
+                          Text(
+                            " Login",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 18),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -140,23 +154,23 @@ class SignupPage extends StatelessWidget {
             ),
           ),
 
-           ClipPath(
-                clipper: OuterClippedPart(),
-                child: Container(
-                  color: Color(0xff0962ff),
-                  width: scrWidth,
-                  height: scrHeight,
-                ),
-              ),
-              //
-              ClipPath(
-                clipper: InnerClippedPart(),
-                child: Container(
-                  color: Color(0xff0c2551),
-                  width: scrWidth,
-                  height: scrHeight,
-                ),
-              ),
+          ClipPath(
+            clipper: OuterClippedPart(),
+            child: Container(
+              color: Color(0xff0962ff),
+              width: scrWidth,
+              height: scrHeight,
+            ),
+          ),
+          //
+          ClipPath(
+            clipper: InnerClippedPart(),
+            child: Container(
+              color: Color(0xff0c2551),
+              width: scrWidth,
+              height: scrHeight,
+            ),
+          ),
         ],
       ),
     );

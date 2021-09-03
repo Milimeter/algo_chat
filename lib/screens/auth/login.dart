@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_signup_screen/constants/controllers.dart';
+import 'package:login_signup_screen/screens/auth/signup.dart';
 
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -32,21 +33,6 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-            color: Colors.black,
-          ),
-        ),
-      ),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -129,18 +115,28 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text("Don't have an account?"),
-                            Text(
-                              " Sign up",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => SignupPage(),
                               ),
-                            )
-                          ],
+                            );
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text("Don't have an account?"),
+                              Text(
+                                " Sign up",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                         Container(
                           padding: EdgeInsets.only(top: 100),
