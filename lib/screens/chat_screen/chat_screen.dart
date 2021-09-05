@@ -18,6 +18,7 @@ import 'package:login_signup_screen/constants/strings.dart';
 import 'package:login_signup_screen/methods/chat_methods.dart';
 import 'package:login_signup_screen/model/message.dart';
 import 'package:login_signup_screen/model/user_data.dart';
+import 'package:login_signup_screen/screens/callscreens/pickup/pickup_layout.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/reply_message_widget.dart';
 import 'package:login_signup_screen/utils/call_utils.dart';
 import 'package:login_signup_screen/utils/permissions.dart';
@@ -86,6 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   _sendgif(String gif) {
+    print(gif);
     Message _message = Message.gifMessage(
       receiverId: widget.receiver.uid,
       senderId: sender.uid,
@@ -238,23 +240,25 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            _buildAppBar(),
-            Flexible(
-              child: messageList(),
-            ),
-            _buildBottomChat(),
-            showEmojiPicker ? Container(child: emojiContainer()) : Container(),
-          ],
+    return PickupLayout(
+          scaffold: Scaffold(
+        body: Container(
+          child: Column(
+            children: [
+              _buildAppBar(),
+              Flexible(
+                child: messageList(),
+              ),
+              _buildBottomChat(),
+              showEmojiPicker ? Container(child: emojiContainer()) : Container(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  _buildAppBar() async {
+  _buildAppBar() {
     return MessengerAppBarAction(
       isScroll: _isScroll,
       isBack: true,
@@ -275,7 +279,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       to: widget.receiver,
                       context: context,
                       callis: "video")
-                  : {},
+                  : null,
         ),
         Icon(
           FontAwesomeIcons.infoCircle,
@@ -364,11 +368,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: IconButton(
                   icon: Icon(
-                    Icons.settings_input_svideo,
+                    FontAwesomeIcons.meteor,
                     size: 25.0,
                     color: Colors.lightBlue,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.snackbar("Message", "Feature Coming Soon :)");
+                  },
                 ),
               ),
               Expanded(
@@ -398,10 +404,28 @@ class _ChatScreenState extends State<ChatScreen> {
                           fontWeight: FontWeight.w500,
                           color: Colors.grey[600],
                         ),
-                        suffixIcon: Icon(
-                          FontAwesomeIcons.solidSmileBeam,
-                          size: 25.0,
-                          color: Colors.lightBlue,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            FontAwesomeIcons.solidSmileBeam,
+                            size: 25.0,
+                            color: Colors.lightBlue,
+                          ),
+                          onPressed: () {
+                            if (!showEmojiPicker) {
+                              setState(() {
+                                _isGiphyOptionClicked = false;
+                              });
+                              // keyboard is visible
+                              hideKeyboard();
+
+                              showEmojiContainer();
+                            } else {
+                              //keyboard is hidden
+                              showKeyboard();
+
+                              hideEmojiContainer();
+                            }
+                          },
                         )),
                   ),
                 ),
@@ -441,7 +465,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: Icon(
-                          FontAwesomeIcons.faucet,
+                          Icons.settings_input_svideo,
                           size: 25.0,
                           color: Colors.lightBlue,
                         ),
@@ -1017,6 +1041,8 @@ class _ChatScreenState extends State<ChatScreen> {
         },
       );
     } else if (message.type == "gif") {
+      print(">>>>>>>>>>>>>>gif  message");
+      print(message.gif);
       message.gif == null
           ? Container()
           : ClipRRect(
@@ -1068,16 +1094,18 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: message.type == 'sticker' || message.type == 'gif'
+                            color: message.type == 'sticker' ||
+                                    message.type == 'gif'
                                 ? Colors.transparent
                                 : Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 5,
                           ),
                         ],
-                        color: message.type == 'sticker' || message.type == 'gif'
-                            ? Colors.transparent
-                            : Colors.white,
+                        color:
+                            message.type == 'sticker' || message.type == 'gif'
+                                ? Colors.transparent
+                                : Colors.white,
                         borderRadius: BorderRadius.only(
                           bottomRight: messageRadius,
                           topRight: messageRadius,
@@ -1124,16 +1152,18 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: message.type == 'sticker' || message.type == 'gif'
+                            color: message.type == 'sticker' ||
+                                    message.type == 'gif'
                                 ? Colors.transparent
                                 : Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 5,
                           ),
                         ],
-                        color: message.type == 'sticker' || message.type == 'gif'
-                            ? Colors.transparent
-                            : Colors.white,
+                        color:
+                            message.type == 'sticker' || message.type == 'gif'
+                                ? Colors.transparent
+                                : Colors.white,
                         borderRadius: BorderRadius.only(
                           bottomRight: messageRadius,
                           topRight: messageRadius,

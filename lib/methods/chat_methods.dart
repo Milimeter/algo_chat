@@ -40,11 +40,13 @@ class ChatMethods {
       print(e);
     }
   }
-   Future<void> addGifToDb(
+
+  Future<void> addGifToDb(
     Message message,
   ) async {
     try {
-      print(">>>>>>>>>>>>>>>>>>Sending Message<<<<<<<<<<<<<<<<<");
+      print(">>>>>>>>>>>>>>>>>>Sending gif Message<<<<<<<<<<<<<<<<<");
+      print(message.gif);
       var map = message.toGifMap();
 
       await _messageCollection
@@ -217,14 +219,13 @@ class ChatMethods {
 
   Future<void> isTyping({String query, String uid, String ruid}) async {
     if (query.trim().length == 0) {
-     await FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection(MESSAGES_COLLECTION)
           .doc(uid)
           .collection(ruid)
           .doc("typingState")
           .update({"isTyping": false});
 
-          
       //await FirebaseFirestore.instance.collection("users").doc(uid).update({"isTyping": false});
     } else if (query.trim().length == 1 || query.trim().length > 1) {
       await FirebaseFirestore.instance
@@ -233,9 +234,10 @@ class ChatMethods {
           .collection(ruid)
           .doc("typingState")
           .update({"isTyping": true});
-     // await FirebaseFirestore.instance.collection("users").doc(uid).update({"isTyping": true});
+      // await FirebaseFirestore.instance.collection("users").doc(uid).update({"isTyping": true});
     }
   }
+
   void setMultipleImageMsg(List<String> url, String receiverId, String senderId,
       Message replyMessage) async {
     try {

@@ -142,6 +142,7 @@ class Message {
     return map;
   }
 
+
   Map toStickerMap() {
     var map = Map<String, dynamic>();
     map['senderId'] = this.senderId;

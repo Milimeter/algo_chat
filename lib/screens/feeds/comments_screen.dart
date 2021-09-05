@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:login_signup_screen/controllers/user_controller.dart';
 import 'package:login_signup_screen/model/comment.dart';
 import 'package:login_signup_screen/model/user_data.dart';
+import 'package:login_signup_screen/screens/callscreens/pickup/pickup_layout.dart';
 import 'package:login_signup_screen/widgets/cached_image.dart';
 
 
@@ -30,30 +31,32 @@ class _CommentsScreenState extends State<CommentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Get.back(),
+    return  PickupLayout(
+          scaffold: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Get.back(),
+            ),
+            elevation: 0,
+            backgroundColor: new Color(0xfff8faf8),
+            title: Text('Comments', style: TextStyle(color: Colors.black)),
           ),
-          elevation: 0,
-          backgroundColor: new Color(0xfff8faf8),
-          title: Text('Comments', style: TextStyle(color: Colors.black)),
-        ),
-        body: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              commentsListWidget(),
-              Divider(
-                height: 20.0,
-                color: Colors.grey,
-              ),
-              commentInputWidget()
-            ],
+          body: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                commentsListWidget(),
+                Divider(
+                  height: 20.0,
+                  color: Colors.grey,
+                ),
+                commentInputWidget()
+              ],
+            ),
           ),
-        ),
-     
+       
+      ),
     );
   }
 

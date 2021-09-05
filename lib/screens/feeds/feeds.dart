@@ -14,6 +14,7 @@ import 'package:login_signup_screen/controllers/feeds_controller.dart';
 import 'package:login_signup_screen/controllers/user_controller.dart';
 import 'package:login_signup_screen/model/like.dart';
 import 'package:login_signup_screen/model/user_data.dart';
+import 'package:login_signup_screen/screens/callscreens/pickup/pickup_layout.dart';
 import 'package:login_signup_screen/screens/feeds/add_screen.dart';
 import 'package:login_signup_screen/screens/feeds/comments_screen.dart';
 import 'package:login_signup_screen/screens/feeds/friend_profile_screen.dart';
@@ -104,86 +105,88 @@ class _FeedsState extends State<Feeds> {
     }
 
     print("=============build called ==============");
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: new Color(0xfff8faf8),
-        centerTitle: true,
-        elevation: 1.0,
-        // leading: new Icon(Icons.camera_alt),
-        title: GestureDetector(
-          onTap: () => Get.to(ProfileScreen()),
-          child: CachedImage(
-            //pass to profile of the receiver
-            _userController.userData.value.profilePhoto,
-            radius: 50,
-            isRound: true,
-          ),
-        ),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 12.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.live_tv,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: ((context) => ChooseCall())));
-              },
+    return PickupLayout(
+          scaffold: Scaffold(
+        appBar: AppBar(
+          backgroundColor: new Color(0xfff8faf8),
+          centerTitle: true,
+          elevation: 1.0,
+          // leading: new Icon(Icons.camera_alt),
+          title: GestureDetector(
+            onTap: () => Get.to(ProfileScreen()),
+            child: CachedImage(
+              //pass to profile of the receiver
+              _userController.userData.value.profilePhoto,
+              radius: 50,
+              isRound: true,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 12.0),
-            child: IconButton(
-              icon: Icon(
-                Entypo.magnifying_glass,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => Search())));
-              },
-            ),
-          )
-        ],
-      ),
-      floatingActionButton: Container(
-        margin: EdgeInsets.only(bottom: 20),
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => InstaAddScreen(),
-            ));
-          },
-          child: Container(
-            decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(50)),
-            child: Icon(
-              Icons.edit,
-              color: Colors.white,
-              size: 25,
-            ),
-            padding: EdgeInsets.all(15),
-          ),
-        ),
-      ),
-      body: Container(
-        child: currentUser != null
-            ? Padding(
-                padding: const EdgeInsets.only(top: 4.0),
-                child: LiquidPullToRefresh(
-                  backgroundColor: Colors.blue[900],
-                  key: _refreshIndicatorKey,
-                  onRefresh: () => _handleRefresh(),
-                  showChildOpacityTransition: false,
-                  child: postImagesWidget(),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: IconButton(
+                icon: Icon(
+                  Icons.live_tv,
+                  color: Colors.black,
                 ),
-              )
-            : Center(
-                child: CircularProgressIndicator(),
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: ((context) => ChooseCall())));
+                },
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: IconButton(
+                icon: Icon(
+                  Entypo.magnifying_glass,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) => Search())));
+                },
+              ),
+            )
+          ],
+        ),
+        floatingActionButton: Container(
+          margin: EdgeInsets.only(bottom: 20),
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => InstaAddScreen(),
+              ));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(50)),
+              child: Icon(
+                Icons.edit,
+                color: Colors.white,
+                size: 25,
+              ),
+              padding: EdgeInsets.all(15),
+            ),
+          ),
+        ),
+        body: Container(
+          child: currentUser != null
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 4.0),
+                  child: LiquidPullToRefresh(
+                    backgroundColor: Colors.blue[900],
+                    key: _refreshIndicatorKey,
+                    onRefresh: () => _handleRefresh(),
+                    showChildOpacityTransition: false,
+                    child: postImagesWidget(),
+                  ),
+                )
+              : Center(
+                  child: CircularProgressIndicator(),
+                ),
+        ),
       ),
     );
   }

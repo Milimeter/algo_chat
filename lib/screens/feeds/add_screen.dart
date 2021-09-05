@@ -7,6 +7,7 @@ import 'package:image_cropper/image_cropper.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:login_signup_screen/constants/asset_path.dart';
+import 'package:login_signup_screen/screens/callscreens/pickup/pickup_layout.dart';
 import 'package:login_signup_screen/screens/feeds/upload_feed.dart';
 import 'package:scaled_list/scaled_list.dart';
 
@@ -140,94 +141,96 @@ class _InstaAddScreenState extends State<InstaAddScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () {
-              Get.back();
-            },
+    return PickupLayout(
+          scaffold: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+            title: Text('Create Post',
+                style: TextStyle(
+                  color: Colors.black,
+                )),
           ),
-          title: Text('Create Post',
-              style: TextStyle(
-                color: Colors.black,
-              )),
-        ),
-        // body: Center(
-        //     // ignore: deprecated_member_use
-        //     child: RaisedButton.icon(
-        //   splashColor: Colors.yellow,
-        //   shape: StadiumBorder(),
-        //   color: Colors.black,
-        //   label: Text(
-        //     'Upload Image',
-        //     style: TextStyle(color: Colors.white),
-        //   ),
-        //   icon: Icon(
-        //     Icons.cloud_upload,
-        //     color: Colors.white,
-        //   ),
-        //   onPressed: _showImageDialog,
-        // )),
-        body: Center(
-          child: ScaledList(
-            selectedCardHeightRatio: 0.9,
-            unSelectedCardHeightRatio: 0.3,
-            itemCount: categories.length,
-            itemColor: (index) {
-              return kMixedColors[index % kMixedColors.length];
-            },
-            itemBuilder: (index, selectedIndex) {
-              final category = categories[index];
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    hoverColor: Colors.white,
-                    onTap: () {
-                      switch (index) {
-                        case 0:
-                          showImageDialog();
-                          break;
-                        case 1:
-                          Get.snackbar("Message", "Feature Coming Soon :)");
-                          break;
-                        case 2:
-                          // video
-                          Get.snackbar("Message", "Feature Coming Soon :)");
-                          break;
-                        case 3:
-                          Get.snackbar("Message", "Feature Coming Soon :)");
-                          break;
-                        case 4:
-                          Get.snackbar("Message", "Feature Coming Soon :)");
-                          break;
-                        default:
-                          {
-                            print("Invalid choice");
-                          }
-                          break;
-                      }
-                    },
-                    child: Container(
-                      height: selectedIndex == index ? 120 : 80,
-                      child: Image.asset(category.image),
+          // body: Center(
+          //     // ignore: deprecated_member_use
+          //     child: RaisedButton.icon(
+          //   splashColor: Colors.yellow,
+          //   shape: StadiumBorder(),
+          //   color: Colors.black,
+          //   label: Text(
+          //     'Upload Image',
+          //     style: TextStyle(color: Colors.white),
+          //   ),
+          //   icon: Icon(
+          //     Icons.cloud_upload,
+          //     color: Colors.white,
+          //   ),
+          //   onPressed: _showImageDialog,
+          // )),
+          body: Center(
+            child: ScaledList(
+              selectedCardHeightRatio: 0.9,
+              unSelectedCardHeightRatio: 0.3,
+              itemCount: categories.length,
+              itemColor: (index) {
+                return kMixedColors[index % kMixedColors.length];
+              },
+              itemBuilder: (index, selectedIndex) {
+                final category = categories[index];
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      hoverColor: Colors.white,
+                      onTap: () {
+                        switch (index) {
+                          case 0:
+                            showImageDialog();
+                            break;
+                          case 1:
+                            Get.snackbar("Message", "Feature Coming Soon :)");
+                            break;
+                          case 2:
+                            // video
+                            Get.snackbar("Message", "Feature Coming Soon :)");
+                            break;
+                          case 3:
+                            Get.snackbar("Message", "Feature Coming Soon :)");
+                            break;
+                          case 4:
+                            Get.snackbar("Message", "Feature Coming Soon :)");
+                            break;
+                          default:
+                            {
+                              print("Invalid choice");
+                            }
+                            break;
+                        }
+                      },
+                      child: Container(
+                        height: selectedIndex == index ? 120 : 80,
+                        child: Image.asset(category.image),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    category.name,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: selectedIndex == index ? 25 : 20),
-                  )
-                ],
-              );
-            },
-          ),
-        ));
+                    SizedBox(height: 15),
+                    Text(
+                      category.name,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: selectedIndex == index ? 25 : 20),
+                    )
+                  ],
+                );
+              },
+            ),
+          )),
+    );
   }
 
   final List<Color> kMixedColors = [

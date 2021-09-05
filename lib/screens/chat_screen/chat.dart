@@ -6,6 +6,7 @@ import 'package:login_signup_screen/constants/controllers.dart';
 import 'package:login_signup_screen/methods/chat_methods.dart';
 import 'package:login_signup_screen/model/contact.dart';
 import 'package:login_signup_screen/model/message.dart';
+import 'package:login_signup_screen/screens/callscreens/pickup/pickup_layout.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/chat_item.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/search_bar.dart';
 import 'package:login_signup_screen/screens/chat_screen/widget/search_user.dart';
@@ -44,17 +45,19 @@ class _ChatListScreenState extends State<ChatListScreen> {
   
   @override
   Widget build(BuildContext context) {
-    return NotificationListener<OverscrollIndicatorNotification>(
-      onNotification: (overscroll) {
-        overscroll.disallowGlow();
-      },
-      child: Container(
-        decoration: BoxDecoration(color: Colors.white),
-        child: Column(
-          children: <Widget>[
-            _buildAlgoAppBar(_isScroll),
-            _buildRootListView(),
-          ],
+    return PickupLayout(
+          scaffold: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: (overscroll) {
+          overscroll.disallowGlow();
+        },
+        child: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          child: Column(
+            children: <Widget>[
+              _buildAlgoAppBar(_isScroll),
+              _buildRootListView(),
+            ],
+          ),
         ),
       ),
     );
@@ -78,10 +81,11 @@ class _ChatListScreenState extends State<ChatListScreen> {
                 controller: _controller,
                 padding: EdgeInsets.all(10),
                 itemCount: docList.length,
+                shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return _buildSearchBar();
-                  } else {
+                  // if (index == 0) {
+                  //   return _buildSearchBar();
+                  // } else {
                     try {
                       Contact contact = Contact.fromMap(docList[index].data());
 
@@ -89,7 +93,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                     } catch (e) {
                       return Text("");
                     }
-                  }
+                //  }
                 },
               );
             }

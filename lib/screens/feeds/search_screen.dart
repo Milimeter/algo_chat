@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:login_signup_screen/controllers/feeds_controller.dart';
 import 'package:login_signup_screen/model/user_data.dart';
+import 'package:login_signup_screen/screens/callscreens/pickup/pickup_layout.dart';
 import 'package:login_signup_screen/screens/feeds/friend_profile_screen.dart';
 import 'package:login_signup_screen/screens/feeds/post_detail_screen.dart';
 import 'package:login_signup_screen/widgets/custom_tile.dart';
@@ -320,12 +321,14 @@ class _SearchUserState extends State<SearchUser> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: searchAppBar(context),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: buildSuggestions(query),
+    return PickupLayout(
+          scaffold: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: searchAppBar(context),
+        body: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: buildSuggestions(query),
+        ),
       ),
     );
   }

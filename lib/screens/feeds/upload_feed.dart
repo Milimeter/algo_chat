@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:login_signup_screen/controllers/feeds_controller.dart';
 import 'package:login_signup_screen/controllers/user_controller.dart';
+import 'package:login_signup_screen/screens/callscreens/pickup/pickup_layout.dart';
 import 'package:login_signup_screen/widgets/loading.dart';
 
 
@@ -137,173 +138,175 @@ class _UploadFeedState extends State<UploadFeed> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('New Post', style: TextStyle(color: Colors.black)),
-          backgroundColor: new Color(0xfff8faf8),
-          elevation: 1.0,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () => Get.back(),
-          ),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0, top: 20.0),
-              child: GestureDetector(
-                child: Text('Share',
-                    style: TextStyle(color: Colors.blue, fontSize: 16.0)),
-                onTap: () {
-                  // To show the CircularProgressIndicator
-                  // _changeVisibility(false);
-                  validateAndSubmit();
-                },
-              ),
-            )
-          ],
-        ),
-        body: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12.0, left: 12.0),
-                    child: Container(
-                      width: 80.0,
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: FileImage(widget.imageFile))),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 12.0, right: 8.0),
-                      child: TextField(
-                        controller: _captionController,
-                        maxLines: 3,
-                        focusNode: writingTextFocus,
-                        keyboardType: TextInputType.multiline,
-                        decoration: InputDecoration(
-                          hintText: 'Write a caption...',
-                        ),
-                        // onChanged: ((value) {
-                        //   setState(() {
-                        //     _captionController.text = value;
-                        //   });
-                        // }),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Divider(),
-              ListTile(
-                leading: Icon(Icons.pin_drop),
-                title: Container(
-                  width: 250.0,
-                  child: TextField(
-                    controller: locationController,
-                    decoration: InputDecoration(
-                        hintText: "Where was this photo taken?",
-                        border: InputBorder.none),
-                  ),
-                ),
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.all(20.0),
-              //   child: TextField(
-              //     controller: _locationController,
-              //     // onChanged: ((value) {
-              //     //   setState(() {
-              //     //     _locationController.text = value;
-              //     //   });
-              //     // }),
-              //     decoration: InputDecoration(
-              //       hintText: 'Add location',
-              //     ),
-              //   ),
-              // ),
-              Divider(), //scroll view where we will show location to users
-              (address == null)
-                  ? Container()
-                  : SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.only(right: 5.0, left: 5.0),
-                      child: Row(
-                        children: <Widget>[
-                          buildLocationButton(address.featureName),
-                          buildLocationButton(address.subLocality),
-                          buildLocationButton(address.locality),
-                          buildLocationButton(address.subAdminArea),
-                          buildLocationButton(address.adminArea),
-                          buildLocationButton(address.countryName),
-                        ],
-                      ),
-                    ),
-              (address == null) ? Container() : Divider(),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 12.0),
-              //   child: FutureBuilder(
-              //       future: locateUser(),
-              //       builder: ((context, AsyncSnapshot<List<Address>> snapshot) {
-              //         //  if (snapshot.hasData) {
-              //         if (snapshot.hasData) {
-              //           print(snapshot.data.first.locality);
-              //           return Column(
-              //             // alignment: WrapAlignment.start,
-              //             children: <Widget>[
-              //               GestureDetector(
-              //                 child: Chip(
-              //                   label: Text(snapshot.data.first.locality),
-              //                 ),
-              //                 onTap: () {
-              //                   setState(() {
-              //                     _locationController.text =
-              //                         snapshot.data.first.locality;
-              //                   });
-              //                 },
-              //               ),
-              //               Padding(
-              //                 padding: const EdgeInsets.only(left: 12.0),
-              //                 child: GestureDetector(
-              //                   child: Chip(
-              //                     label: Text(snapshot.data.first.subAdminArea +
-              //                         ", " +
-              //                         snapshot.data.first.subLocality),
-              //                   ),
-              //                   onTap: () {
-              //                     setState(() {
-              //                       _locationController.text =
-              //                           snapshot.data.first.subAdminArea +
-              //                               ", " +
-              //                               snapshot.data.first.subLocality;
-              //                     });
-              //                   },
-              //                 ),
-              //               ),
-              //             ],
-              //           );
-              //         } else {
-              //           print("Connection State : ${snapshot.connectionState}");
-              //           return CircularProgressIndicator();
-              //         }
-              //       })),
-              // ),
-
+    return PickupLayout(
+          scaffold: Scaffold(
+          appBar: AppBar(
+            title: Text('New Post', style: TextStyle(color: Colors.black)),
+            backgroundColor: new Color(0xfff8faf8),
+            elevation: 1.0,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+              onPressed: () => Get.back(),
+            ),
+            actions: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 50.0),
-                child: Offstage(
-                  child: CircularProgressIndicator(),
-                  offstage: _visibility,
+                padding: const EdgeInsets.only(right: 20.0, top: 20.0),
+                child: GestureDetector(
+                  child: Text('Share',
+                      style: TextStyle(color: Colors.blue, fontSize: 16.0)),
+                  onTap: () {
+                    // To show the CircularProgressIndicator
+                    // _changeVisibility(false);
+                    validateAndSubmit();
+                  },
                 ),
               )
             ],
           ),
-        ),
-     
+          body: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12.0, left: 12.0),
+                      child: Container(
+                        width: 80.0,
+                        height: 80.0,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: FileImage(widget.imageFile))),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12.0, right: 8.0),
+                        child: TextField(
+                          controller: _captionController,
+                          maxLines: 3,
+                          focusNode: writingTextFocus,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            hintText: 'Write a caption...',
+                          ),
+                          // onChanged: ((value) {
+                          //   setState(() {
+                          //     _captionController.text = value;
+                          //   });
+                          // }),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Divider(),
+                ListTile(
+                  leading: Icon(Icons.pin_drop),
+                  title: Container(
+                    width: 250.0,
+                    child: TextField(
+                      controller: locationController,
+                      decoration: InputDecoration(
+                          hintText: "Where was this photo taken?",
+                          border: InputBorder.none),
+                    ),
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(20.0),
+                //   child: TextField(
+                //     controller: _locationController,
+                //     // onChanged: ((value) {
+                //     //   setState(() {
+                //     //     _locationController.text = value;
+                //     //   });
+                //     // }),
+                //     decoration: InputDecoration(
+                //       hintText: 'Add location',
+                //     ),
+                //   ),
+                // ),
+                Divider(), //scroll view where we will show location to users
+                (address == null)
+                    ? Container()
+                    : SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(right: 5.0, left: 5.0),
+                        child: Row(
+                          children: <Widget>[
+                            buildLocationButton(address.featureName),
+                            buildLocationButton(address.subLocality),
+                            buildLocationButton(address.locality),
+                            buildLocationButton(address.subAdminArea),
+                            buildLocationButton(address.adminArea),
+                            buildLocationButton(address.countryName),
+                          ],
+                        ),
+                      ),
+                (address == null) ? Container() : Divider(),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 12.0),
+                //   child: FutureBuilder(
+                //       future: locateUser(),
+                //       builder: ((context, AsyncSnapshot<List<Address>> snapshot) {
+                //         //  if (snapshot.hasData) {
+                //         if (snapshot.hasData) {
+                //           print(snapshot.data.first.locality);
+                //           return Column(
+                //             // alignment: WrapAlignment.start,
+                //             children: <Widget>[
+                //               GestureDetector(
+                //                 child: Chip(
+                //                   label: Text(snapshot.data.first.locality),
+                //                 ),
+                //                 onTap: () {
+                //                   setState(() {
+                //                     _locationController.text =
+                //                         snapshot.data.first.locality;
+                //                   });
+                //                 },
+                //               ),
+                //               Padding(
+                //                 padding: const EdgeInsets.only(left: 12.0),
+                //                 child: GestureDetector(
+                //                   child: Chip(
+                //                     label: Text(snapshot.data.first.subAdminArea +
+                //                         ", " +
+                //                         snapshot.data.first.subLocality),
+                //                   ),
+                //                   onTap: () {
+                //                     setState(() {
+                //                       _locationController.text =
+                //                           snapshot.data.first.subAdminArea +
+                //                               ", " +
+                //                               snapshot.data.first.subLocality;
+                //                     });
+                //                   },
+                //                 ),
+                //               ),
+                //             ],
+                //           );
+                //         } else {
+                //           print("Connection State : ${snapshot.connectionState}");
+                //           return CircularProgressIndicator();
+                //         }
+                //       })),
+                // ),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: Offstage(
+                    child: CircularProgressIndicator(),
+                    offstage: _visibility,
+                  ),
+                )
+              ],
+            ),
+          ),
+       
+      ),
     );
   }
 
