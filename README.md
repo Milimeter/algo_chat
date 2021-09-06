@@ -6,6 +6,8 @@ Apache License
 AlgoChat is a Cross-Platform(Android & iOS)  Mobile Application using the Algorand blockchain written in Dart and built on [Flutter](https://flutter.dev/) and others. 
 It actualizes many functionalities viz; chatting with friends, Posting of polls, posting of products/listings(ads), payment for purchases using Algocoins,sending and receiving Algocoins, direct messaging, video chatting, voice chatting, live stream of events and many others.
 
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/frame_1.png?raw=true">
+</div>
 
 # Architecture
 
@@ -273,5 +275,7 @@ class CallMethods {
       print(e);
       return false;
 ```
-	
+
+	 <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/frame_1.png?raw=true">
+</div>
 	
