@@ -249,6 +249,29 @@ Privacy - Microphone Usage Description, and add a note in the Value column.
 Privacy - Camera Usage Description, and add a note in the Value column.
 
 
-# Chat Messaging
-                        
+# Chat, Call & Video Messaging
+```
+class CallMethods {
+  final CollectionReference callCollection =
+      FirebaseFirestore.instance.collection(CALL_COLLECTION);
 
+  Stream<DocumentSnapshot> callStream({String uid}) =>
+      callCollection.doc(uid).snapshots();
+
+  Future<bool> makeCall({Call call}) async {
+    try {
+      call.hasDialled = true;
+      Map<String, dynamic> hasDialledMap = call.toMap(call);
+
+      call.hasDialled = false;
+      Map<String, dynamic> hasNotDialledMap = call.toMap(call);
+
+      await callCollection.doc(call.callerId).set(hasDialledMap);
+      await callCollection.doc(call.receiverId).set(hasNotDialledMap);
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+```
+	
+	
