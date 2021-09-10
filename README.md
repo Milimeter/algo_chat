@@ -52,10 +52,20 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimete
  
  
 ## Screenshots
-<p>
- Let Add Image Url Here
 
-</p>
+<img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/capture1.PNG?raw=true">
+</div>
+
+
+<img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/userjourney.png?raw=true">
+</div>
+
+
+<img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/capture2.PNG?raw=true">
+</div>
+
+
+
 
 ## Dependencies
 
@@ -253,6 +263,9 @@ Open the Info.plist and add:
 Privacy - Microphone Usage Description, and add a note in the Value column.
 Privacy - Camera Usage Description, and add a note in the Value column.
 
+
+<img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/livestreaming.png?raw=true">
+</div>
 
 # Chat, Call & Video Messaging
 ```
