@@ -24,7 +24,7 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimete
  
 
 # Demo
-[Download the release APK to try out AlgoChat](https://github.com/Milimeter/algo_chat) 
+[Download the release APK to try out AlgoChat](https://drive.google.com/file/d/1bGziITwp0eIIs-mHP_wFKaREPCIdKEHm/view?usp=sharing) 
 
 
 ## Features
@@ -85,7 +85,7 @@ The AlgoChat Wallet built upon the [wallet-core SDK](https://github.com/Milimete
 
 ## Download the App
 
-You can download the beta version of our app from the [Google Play](https://github.com/Milimeter/algo_chat) or the [App Store](https://github.com/Milimeter/algo_chat)
+You can download the beta version of our app from the [Google Play](https://drive.google.com/file/d/1bGziITwp0eIIs-mHP_wFKaREPCIdKEHm/view?usp=sharing) or the [App Store](https://github.com/Milimeter/algo_chat)
 
 ## Getting Started
 
@@ -98,6 +98,9 @@ You can download the beta version of our app from the [Google Play](https://gith
 
       git clone https://github.com/Milimeter/algo_chat
       cd algochat
+
+If you have any issue cloning this project
+Chat me up[You can click here](opeyemicharlese@gmail.com)
 
 ### Configuring the environment
 
@@ -276,6 +279,25 @@ class CallMethods {
       return false;
 ```
 
-	 <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/frame_1.png?raw=true">
+ <div style="text-align:center">
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/flutterdoc.JPG?raw=true">
 </div>
 	
+	
+	
+	
+ <div style="text-align:center">
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/flutterdoc.JPG?raw=true">
+</div>
+	
+	
+	
+	
+ <div style="text-align:center">
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/flutterdoc.JPG?raw=true">
+</div>
+	
+	
+Many Others Fuctionalities were discuss and display in this app
+Download and enjoy the App.
+Thanks
