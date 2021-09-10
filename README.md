@@ -298,6 +298,6 @@ class CallMethods {
 </div>
 	
 	
-Many Others Fuctionalities were discuss and display in this app
+Many Others Fuctionalities were discussed and displayed in this app
 Download and enjoy the App.
 Thanks
