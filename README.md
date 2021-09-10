@@ -279,22 +279,18 @@ class CallMethods {
       return false;
 ```
 
- <div style="text-align:center">
- <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/flutterdoc.JPG?raw=true">
+ <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/vidst.jpeg?raw=true">
 </div>
 	
 	
 	
 	
- <div style="text-align:center">
- <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/flutterdoc.JPG?raw=true">
+  <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/vidstre.jpeg?raw=true">
 </div>
 	
 	
 	
-	
- <div style="text-align:center">
- <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/flutterdoc.JPG?raw=true">
+  <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/wall.jpeg?raw=true">
 </div>
 	
 	
