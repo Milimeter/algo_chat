@@ -1,4 +1,4 @@
-# Algorand Social Network Application (NFT)
+# Algorand Social Network Application (SNT)
 
 Apache License
 
