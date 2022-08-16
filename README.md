@@ -203,9 +203,7 @@ final apiKey = 'HF4Gvj8b4y2jzH5fAWCN7aEXD61Hn5ru3HblHcpf';
   );
 
   final indexerClient = IndexerClient(
-    apiUrl: PureStake.TESTNET_INDEXER_API_URL,
-    apiKey: apiKey,
-    tokenKey: PureStake.API_TOKEN_HEADER,
+    
   );
 
   final algorand = Algorand(
@@ -297,14 +295,7 @@ class CallMethods {
 	
 	
 	
-	
-  <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/vidstre.jpeg?raw=true">
-</div>
-	
-	
-	
-  <img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/wall.jpeg?raw=true">
-</div>
+
 	
 	
 Many Others Fuctionalities were discussed and displayed in this app
