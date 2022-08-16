@@ -195,7 +195,7 @@ If you opened this file in Vs code, you should have a file structure similar to 
 # Algorand Wallet
 
 ```
-final apiKey = 'HF4Gvj8b4y2jzH5fAWCN7aEXD61Hn5ru3HblHcpf';
+
   final algodClient = AlgodClient(
     apiUrl: PureStake.TESTNET_ALGOD_API_URL,
     apiKey: apiKey,
@@ -262,8 +262,7 @@ Privacy - Microphone Usage Description, and add a note in the Value column.
 Privacy - Camera Usage Description, and add a note in the Value column.
 
 
-<img src="https://github.com/Milimeter/algo_chat/blob/main/AppImages/livestreaming.png?raw=true">
-</div>
+
 
 # Chat, Call & Video Messaging
 ```
